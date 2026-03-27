@@ -1,5 +1,20 @@
 <?php
 
+/*
+ *---------------------------------------------------------------
+ * NUCLEAR CORS FIX (Add this first)
+ *---------------------------------------------------------------
+ */
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
+// Handle the "Preflight" request from Axios
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
 use CodeIgniter\Boot;
 use Config\Paths;
 
@@ -41,15 +56,10 @@ if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
  *---------------------------------------------------------------
  * BOOTSTRAP THE APPLICATION
  *---------------------------------------------------------------
- * This process sets up the path constants, loads and registers
- * our autoloader, along with Composer's, loads our constants
- * and fires up an environment-specific bootstrapping.
  */
 
 // LOAD OUR PATHS CONFIG FILE
-// This is the line that might need to be changed, depending on your folder structure.
 require FCPATH . '../app/Config/Paths.php';
-// ^^^ Change this line if you move your application folder
 
 $paths = new Paths();
 

@@ -25,17 +25,21 @@ class Filters extends BaseFilters
      * or [filter_name => [classname1, classname2, ...]]
      */
     public array $aliases = [
-        'csrf'          => CSRF::class,
-        'toolbar'       => DebugToolbar::class,
-        'honeypot'      => Honeypot::class,
-        'invalidchars'  => InvalidChars::class,
-        'secureheaders' => SecureHeaders::class,
-        'cors'          => Cors::class,
-        'forcehttps'    => ForceHTTPS::class,
-        'pagecache'     => PageCache::class,
-        'performance'   => PerformanceMetrics::class,
-        'auth_filter' => \App\Filters\AuthFilter::class,
-    ];
+    'csrf'          => CSRF::class,
+    'toolbar'       => DebugToolbar::class,
+    'honeypot'      => Honeypot::class,
+    'invalidchars'  => InvalidChars::class,
+    'secureheaders' => SecureHeaders::class,
+    
+    // CHANGE THIS LINE: 
+    // Point it to your custom Filter, not the system one.
+    'cors'          => \App\Filters\Cors::class, 
+    
+    'forcehttps'    => ForceHTTPS::class,
+    'pagecache'     => PageCache::class,
+    'performance'   => PerformanceMetrics::class,
+    'auth_filter'   => \App\Filters\AuthFilter::class,
+];
 
     /**
      * List of special required filters.
@@ -52,7 +56,7 @@ class Filters extends BaseFilters
      */
     public array $required = [
         'before' => [
-            'forcehttps', // Force Global Secure Requests
+           // 'forcehttps', // Force Global Secure Requests
             'pagecache',  // Web Page Caching
         ],
         'after' => [
