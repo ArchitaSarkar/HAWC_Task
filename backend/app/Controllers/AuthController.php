@@ -4,6 +4,7 @@ use CodeIgniter\RESTful\ResourceController;
 use App\Models\AuthUserModel;
 use App\Models\TeacherModel;
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 class AuthController extends ResourceController {
     
@@ -45,31 +46,42 @@ class AuthController extends ResourceController {
         $authModel = new AuthUserModel();
         $json = $this->request->getJSON();
 
+        // Find user by email
         $user = $authModel->where('email', $json->email)->first();
 
+        // Verify user and password
         if (!$user || !password_verify($json->password, $user['password'])) {
             return $this->failUnauthorized('Invalid credentials');
         }
 
-        $key = "YOUR_SECRET_KEY"; // In production, move this to .env
+        // Fetch values from .env
+        $key = (string)env('JWT_SECRET');
+         // Safety check: if env() failed to load the key
+        if (empty($key) || strlen($key) < 32) {
+            return $this->fail('Server configuration error: JWT Key is missing or too short.', 500);
+        }
+        $iat = time();
+        $exp = $iat + (int)env('JWT_EXPIRATION');
+
         $payload = [
             "iss" => "localhost",
             "aud" => "localhost",
-            "iat" => time(),
-            "exp" => time() + 3600, // 1 hour expiration
+            "iat" => $iat,
+            "exp" => $exp,
             "uid" => $user['id'],
             "email" => $user['email']
         ];
 
+        // Generate Token
         $token = JWT::encode($payload, $key, 'HS256');
 
         return $this->respond([
             'message' => 'Login Successful',
             'token'   => $token,
             'user'    => [
-                'id' => $user['id'],
+                'id'    => $user['id'],
                 'email' => $user['email'],
-                'name' => $user['first_name']
+                'name'  => $user['first_name']
             ]
         ]);
     }
