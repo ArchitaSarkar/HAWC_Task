@@ -44,8 +44,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone [https://github.com/ArchitaSarkar/HAWC_Task.git](https://github.com/ArchitaSarkar/HW-WHY_Task.git)
-   cd HW-WHY_Task
+   git clone https://github.com/ArchitaSarkar/HAWC_Task.git
+   
     ```
 2. **Frontend Setup**
    ```bash
