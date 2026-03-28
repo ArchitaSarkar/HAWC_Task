@@ -63,12 +63,27 @@
 
 ### 📂 Project Structure
    ```bash
-   src/
-   ├── api/            # Axios instance with JWT interceptors
-   ├── components/     # Reusable UI (ProtectedRoutes, ThemeToggle)
-   ├── pages/          # Login, Register, and Dashboard views
-   ├── App.jsx         # Routing & Layout logic
-   └── index.css       # Tailwind v4 theme & HUD background styles
+  .
+├── backend/                # CodeIgniter 4 Server Logic
+│   ├── app/                # Application logic (Controllers, Models, Filters)
+│   ├── public/             # Entry point (index.php)
+│   ├── tests/              # Automated unit tests
+│   ├── .env                # Environment variables (Database credentials)
+│   ├── composer.json       # PHP dependencies
+│   └── spark               # CodeIgniter CLI tool
+│
+├── frontend/               # React + Vite + Tailwind CSS
+│   ├── public/             # Static assets (Favicon, etc.)
+│   ├── src/
+│   │   ├── api/            # Axios instance & API endpoint configurations
+│   │   ├── assets/         # Images (Network background, icons)
+│   │   ├── components/     # Reusable UI (ProtectedRoutes, ThemeToggle)
+│   │   └── pages/          # Main Views (Dashboard.jsx, Login.jsx, Register.jsx)
+│   ├── index.css           # Tailwind v4 theme & Global HUD styles
+│   ├── package.json        # Frontend dependencies
+│   └── tailwind.config.js  # Custom theme & color palette
+│
+└── README.md               # Project documentation
    ```
 
 ## 👤 Author
