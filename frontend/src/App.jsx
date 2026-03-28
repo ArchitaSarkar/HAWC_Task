@@ -7,10 +7,9 @@ import Dashboard from "./pages/Dashboard"; // NO curly braces
 function App() {
   return (
     <Router>
-      <nav style={{ padding: '15px', background: '#222', color: '#fff' }}>
+      <nav style={{ padding: '15px', background: '#1d1b1b', color: '#fff' }}>
         <Link to="/" style={{ color: '#fff', marginRight: '10px' }}>Register</Link>
         <Link to="/login" style={{ color: '#fff', marginRight: '10px' }}>Login</Link>
-        <Link to="/dashboard" style={{ color: '#fff' }}>Dashboard</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Register />} />
