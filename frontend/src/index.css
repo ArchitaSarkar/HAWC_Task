@@ -1,27 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy-deep: #001B3D;
-  --color-navy-card: #002A5C;
-  --color-navy-input: #00142D;
-  --color-teal-accent: #2DD4BF;
+  --color-navy-deep: #020617;
+  --color-navy-card: rgba(11, 20, 55, 0.8); /* Semi-transparent for glass effect */
+  --color-teal-accent: #2dd4bf;
 }
 
 :root {
-  background-color: #001B3D;
+  background-color: #020617;
   color: white;
-  font-family: 'Inter', sans-serif;
 }
 
-/* Stunning Professional Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* Professional Network Background for Auth Pages */
+.auth-bg {
+  background: linear-gradient(to bottom, rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.9)), 
+              url('frontend\public\network_bg.png'); /* Add your image to public folder */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
 }
-::-webkit-scrollbar-track {
-  background: #001B3D;
-}
-::-webkit-scrollbar-thumb {
-  background: #002A5C;
-  border-radius: 10px;
-  border: 2px solid #001B3D;
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(11, 20, 55, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
