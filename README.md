@@ -13,12 +13,12 @@
 
 ### 🔑 Authentication
 <div flex align="center">
-  <img src="YOUR_LOGIN_SCREENSHOT_LINK" width="45%" alt="Login Page" />
-  <img src="YOUR_REGISTER_SCREENSHOT_LINK" width="45%" alt="Register Page" />
+  <img src="./Screenshots/Login.png" width="45%" alt="Login Page" />
+  <img src="./Screenshots/Register.png" width="45%" alt="Register Page" />
 </div>
 
 ### 📊 Dashboard
-![Dashboard Row View](https://drive.google.com/file/d/1QggdLefjfMGWDxFXYjvoFSQcX9IWsYkm/view?usp=drive_link)
+![Dashboard Row View](![Faculty Dashboard](./Screenshots/Dashboard.png))
 
 ## 🛠️ Tech Stack
 
